@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Rayyan" />
+  <meta name="description" content="Rayyan's portfolio showcasing skills, projects, and more." />
+  <title>Xyz's Wonderfully Weird Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link rel="icon" href="https://emojiapi.dev/api/v1/1f431/64.png" type="image/png" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-color: #fef6ff;
+      --accent: #ffb3c6;
+      --text-color: #333;
+      --card-bg: #fff0f5;
+    }
+
+    body {
+      font-family: "Patrick Hand", cursive;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .dark-mode {
+      --bg-color: #1a1a1a;
+      --card-bg: #333;
+      --text-color: #f5f5f5;
+    }
+
+    .dark-mode-glow {
+      animation: glow 1s ease-out;
+    }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+      }
+
+      100% {
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0);
+      }
+    }
+
+    ul {
+      list-style-type: "✨ ";
+      padding-left: 1.5rem;
+    }
+
+    .fun-fact,
+    .cat-duo {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, #fcb045, #fd1d1d, #833ab4);
+      color: white;
+    }
+
+    .navbar-brand {
+      color: white !important;
+      font-size: 1.5rem;
+    }
+
+    a.btn:hover {
+      transform: scale(1.05);
+      transition: 0.2s ease;
+    }
+
+    img.rounded-circle {
+      transition: transform 0.3s ease;
+    }
+
+    img.rounded-circle:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .hover-glow:hover {
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+      transform: scale(1.03);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .bounce-cat {
+      animation: bounce 2.5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 15px;
+      background-color: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+    }
+
+    .contact-me {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent);
+      color: var(--text-color);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .contact-link i {
+      margin-right: 8px;
+    }
+
+    .contact-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+      text-decoration: none;
+    }
+
+    /* .navbar,
+      footer {
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      } */
+
+    #toggleMode {
+      margin-left: 1rem;
+    }
+
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+      color: var(--text-color) !important;
+    }
+
+    .navbar .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    footer p,
+    footer small {
+      color: var(--text-color);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark"
+    style="background: linear-gradient(90deg, #fcb045, #fd1d1d, #833ab4)">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Xyz's Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- 🔥 THIS is the collapsible div you need -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-3 ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#fun-fact">Fun Fact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#connect">Connect</a>
+          </li>
+        </ul>
+        <button id="toggleMode" class="btn btn-sm btn-warning ms-lg-2">
+          🌓 Toggle Dark Mode
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <header class="mb-5 text-center">
+      <div class="d-flex flex-column align-items-center justify-content-center gap-3">
+        <h1 class="display-4 fw-bold text-primary-emphasis">
+          Hi, I'm Xyz! 👋
+        </h1>
+        <div class="position-relative text-center">
+          <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="Profile"
+            class="rounded-circle border border-5 border-danger mt-4 shadow-lg" width="160" height="160"
+            style="animation: float 3s ease-in-out infinite" />
+          <div class="fst-italic mt-2" style="font-size: 1.2rem; color: #ff0909">
+            (Yes, that's not me, but wouldn’t it be awesome if it was?)
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="skills" class="mb-5 mt-4 text-center">
+      <h2 class="mb-4">
+        My <span class="text-warning">Superhuman</span> Skills 🦸
+      </h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+        <!-- HTML -->
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm text-center p-3 hover-glow skill-card">
+            <img src="https://img.icons8.com/color/96/000000/html-5--v1.png" class="mx-auto" width="60"
+              alt="HTML icon" />
+            <div class="card-body">
+              <h5 class="card-title">HTML</h5>
+              <p class="card-text">I can summon divs like no one else.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CSS -->
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm text-center p-3 hover-glow skill-card">
+            <img src="https://img.icons8.com/color/96/000000/css3.png" class="mx-auto" width="60" alt="CSS icon" />
+            <div class="card-body">
+              <h5 class="card-title">CSS</h5>
+              <p class="card-text">
+                I make things look pretty... sometimes TOO pretty.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm text-center p-3 hover-glow skill-card">
+            <img src="https://img.icons8.com/color/96/000000/javascript--v1.png" class="mx-auto" width="60"
+              alt="JavaScript icon" />
+            <div class="card-body">
+              <h5 class="card-title">JavaScript</h5>
+              <p class="card-text">
+                I once made a button say “Hello World.” Instant legend.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Figma -->
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm text-center p-3 hover-glow skill-card">
+            <img src="https://img.icons8.com/color/96/000000/figma--v1.png" class="mx-auto" width="60"
+              alt="Figma icon" />
+            <div class="card-body">
+              <h5 class="card-title">Figma</h5>
+              <p class="card-text">
+                Where I pretend to be a designer while sipping coffee
+                dramatically.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- WordPress -->
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm text-center p-3 hover-glow skill-card">
+            <img src="https://img.icons8.com/color/96/000000/wordpress.png" class="mx-auto" width="60"
+              alt="WordPress icon" />
+            <div class="card-body">
+              <h5 class="card-title">WordPress</h5>
+              <p class="card-text">
+                I build sites so clean even Google nods in approval.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHP -->
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm text-center p-3 hover-glow skill-card">
+            <img src="https://img.icons8.com/officel/96/000000/php-logo.png" class="mx-auto" width="60"
+              alt="PHP icon" />
+            <div class="card-body">
+              <h5 class="card-title">PHP</h5>
+              <p class="card-text">
+                Backend wizardry with echo magic and semicolon spells.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- fun fact -->
+    <section id="fun-fact" class="fun-fact mb-5 text-center">
+      <h2 class="mb-4">Quirky Fun Fact</h2>
+      <p class="lead mt-3">
+        I have a cat. That cat has a pet.<br />
+        That pet... is a rubber duck named <strong>Ducksworth</strong>.
+      </p>
+      <p class="fst-italic" style="color: #ff0909;">
+        Together, they fight boredom and nap like legends.
+      </p>
+      <div class="d-flex justify-content-center gap-4 mt-4">
+        <!-- Cat gif -->
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="cat gif" class="rounded-circle shadow-lg"
+          width="180" />
+        <!-- Rubber duck gif -->
+        <img
+          src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTZ4MHdtd3Fpanllb293c25ob3d0anJzaWFjN2g0NGh6dWtpeTljMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U8e2dbDSupT14MsKcf/giphy.gif"
+          alt="rubber duck gif" class="rounded-circle shadow-lg" width="180" />
+      </div>
+  </div>
+  </section>
+
+
+  <!-- cato pic -->
+  <section class="cat-duo mb-5 text-center">
+    <h2>🐾 Meet Sir Whiskers & Ducksworth</h2>
+    <div class="row align-items-center mt-4">
+      <div class="col-md-6">
+        <img id="catDuckImage" src="images.jpeg" class="img-fluid rounded shadow bounce-cat"
+          alt="Sir Whiskers and Ducksworth" style="max-height: 300px; cursor: pointer" />
+        <p class="mt-2 fst-italic">
+          (No autographs, please. They're very humble.)
+        </p>
+      </div>
+      <div class="col-md-6">
+        <p class="fs-5">
+          Sir Whiskers is a noble feline with a majestic tail and a deep
+          love for naps in sunbeams.<br /><br />
+          Ducksworth? A fearless yellow sidekick made entirely of rubber and
+          pure courage.<br /><br />
+          Legend says they once stopped a thunderstorm just by snuggling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect Section -->
+  <section id="connect" class="contact-me text-center py-5 px-3 px-md-5">
+    <h2 class="mb-4">📬 Let's Connect!</h2>
+    <p class="mb-4">
+      Whether it's about work, memes, or cat pics, I'm always down to chat!
+    </p>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+      <a href="mailto:xyz@email.com" class="contact-link" target="_blank">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="https://www.linkedin.com/in/xyz/" class="contact-link" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/xyz" class="contact-link" target="_blank">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://twitter.com/xyz" class="contact-link" target="_blank">
+        <i class="fab fa-twitter"></i> Twitter
+      </a>
+    </div>
+  </section>
+
+  <button id="backToTop">⬆ Top</button>
+  </div>
+  <!-- not a footer anyways i will add it  -->
+  <footer class="text-center py-4 mt-5" style="
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        border-top: 2px dashed var(--accent);
+      ">
+    <div class="container">
+      <p class="mb-2 fs-5">
+        Made with ❤️ by <strong>Rayyan</strong> & 🦆 Ducksworth
+      </p>
+      <p class="mb-0 fst-italic">"Building dreams & debugging memes"</p>
+      <small class="d-block mt-2">&copy; 2025 All vibes reserved ✨</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Ensure the DOM is fully loaded before executing the script
+    document.addEventListener("DOMContentLoaded", () => {
+      const messages = [
+        "🚀 You just launched into portfolio orbit!",
+        "😺 Sir Whiskers says hello!",
+        "🦆 Ducksworth approves your visit.",
+        "✨ You're looking fabulous today!",
+        "🎯 Aim high, scroll higher.",
+        "🌈 Somewhere over the CSS rainbow...",
+        "🕺 Welcome to the JavaScript disco!",
+        "📦 Opening package: good vibes.zip",
+        "🌟 Certified 100% bug-free* (*probably)",
+        "🥦 This site contains 0% broccoli.",
+        "👾 You found the secret developer dimension!",
+        "🔮 The code gods are watching...",
+        "🎩 Fancy seeing you here, internet traveler!",
+        "🐸 Frog.exe has been launched successfully.",
+        "📡 Receiving good vibes from the server...",
+        "💻 Warning: This portfolio is *too* cool.",
+        "🚨 Breaking news: You're awesome.",
+        "🍕 This site was built with pizza and dreams.",
+        "🧠 Brain cells loading… Please wait.",
+        "🛸 Beep boop. Human detected.",
+        "☕ This alert was brewed fresh just for you.",
+        "🎉 You’ve just won… a great experience!",
+        "📸 Say cheese! You're on the internet now.",
+        "🌌 Welcome to the aesthetic zone.",
+        "🤖 Beep! Your visit has been logged into the mainframe.",
+        "🔥 Certified spicy content ahead.",
+        "🧃 Sippin' on code and creativity.",
+        "🪩 Loading: 90s vibes and pixel magic...",
+        "🌴 Welcome to Portfolio Island™.",
+        "🔊 This message is powered by lo-fi beats.",
+        "🍄 You stepped on a mushroom. +2 style points!",
+      ];
+
+      // Function to show the funky message
+      const showFunkyMessage = () => {
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+        // Show the alert with SweetAlert2
+        Swal.fire({
+          title: "Hey there! 👋",
+          text: randomMsg,
+          icon: "info",
+          confirmButtonText: "Let's go!",
+          background: "#fff0f5",
+          color: "#333",
+          confirmButtonColor: "#ffb3c6",
+          customClass: {
+            popup: "rounded-4 shadow",
+          },
+        });
+
+        // delay of 40 sec
+        setTimeout(showFunkyMessage, 40000);
+      };
+
+      // Start the continuous funky messages
+      showFunkyMessage();
+    });
+
+    // Toggle mode event listener
+    document.getElementById("toggleMode").addEventListener("click", () => {
+      Swal.fire({
+        title: "✨ Mode switched!",
+        text: "Hope your eyes like this one better.",
+        icon: "success",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

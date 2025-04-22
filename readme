@@ -1,0 +1,25 @@
+# 🏠 Home Page
+
+This repo contains the one and only version of portfolio’s homepage:
+
+- `index.html` – the default homepage that greets visitors like a warm hug (minus the awkwardness tho its dummy).
+
+## 🎯 What I *wanted* to do
+
+The mission was simple: use the same JavaScript across pages. One script to rule them all, and make my codebase look like a well-organized sock drawer. Minimal effort, maximum vibes.
+
+## ⚠️ Warning to the brave souls
+
+Wanna fork this or use it in your own project? Go ahead, I’m flattered 😤  
+But *please*, for the love of clean code:
+
+> 🧹 *If you don’t clean up the unnecessary JavaScript, it might come back in the middle of the night and scare you like a gremlin. Don’t say I didn’t warn you.*  
+> Proceed with caution.
+
+## 🔧 What’s next?
+
+- [ ] Tweak the JavaScript until it’s smoother than a fresh jar of peanut butter
+- [ ] Clean up any leftover code like it’s a messy room (we’re all guilty)
+- [ ] Maybe add some animations, Easter eggs, or that one dancing cat GIF we all need in our lives
+
+Feel free to poke around, leave a PR, or suggest something ridiculous. I’m all ears.
